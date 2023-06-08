@@ -1,7 +1,6 @@
 #pragma once
 
 #include "sdk_mesh.h"
-
 #include "mark.h"
 #include "iterator.h"
 #include "vector.h"

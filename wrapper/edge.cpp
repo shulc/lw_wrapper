@@ -149,7 +149,7 @@ float TEdge::CalcFaceAngle()
 		std::array<TVectorF, 2> normals;
 		size_t n = 0;
 		for (auto polygon : Polygons()) {
-			normals[n++] = polygon.NormalF();
+			normals[n++] = polygon.Normal();
 		}
 		return NGeometry::AngleNormalized(normals[0], normals[1]);
 	}
@@ -159,7 +159,7 @@ float TEdge::CalcFaceAngle()
 
 float TEdge::Length() const
 {
-	return ToVector().len();
+	return glm::length(ToVector());
 }
 
 TVectorF TEdge::ToVector() const

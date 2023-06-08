@@ -61,8 +61,7 @@ public:
 	bool TestMark(TMarkMode mark) const;
 	TPolygonId Index() const;
 
-	TVectorD Normal() const;
-	TVectorF NormalF() const;
+	TVectorF Normal() const;
 	TVectorF CalcNormalF();
 
 	unsigned Count(CLxUser_Point* p) const;

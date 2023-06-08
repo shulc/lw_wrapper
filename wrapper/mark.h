@@ -30,7 +30,7 @@ public:
 
 	TMarkMode() = default;
 	TMarkMode(CLxUser_MeshService&, ESelect set, ESelect clear);
-    NSDK::TMaskMode Mode{};
+    NSdk::TMode Mode{};
 
 private:
 	const char* GetName(ESelect select);

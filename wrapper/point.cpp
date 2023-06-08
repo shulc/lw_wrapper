@@ -141,14 +141,14 @@ TPoint::TPolygonContainer TPoint::Polygons()
 TVectorF TPoint::Pos() const
 {
 	TVectorF pos;
-	Point.Pos(pos);
+	Point.Pos(&pos.x);
 	return pos;
 }
 
 void TPoint::Pos(const TVectorF& pos)
 {
 	TVectorD posDouble(pos);
-	Point.SetPos(posDouble);
+	Point.SetPos(&posDouble.x);
 }
 
 bool TPoint::Test() const

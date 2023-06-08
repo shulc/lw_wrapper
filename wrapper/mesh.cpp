@@ -151,7 +151,7 @@ LXtPointID TMesh::CreatePoint(const TVectorF& co)
 	point.fromMesh(Mesh);
 	LXtPointID v;
 	TVectorD cod(co);
-	point.New(cod, &v);
+	point.New(&cod.x, &v);
 	return v;
 }
 

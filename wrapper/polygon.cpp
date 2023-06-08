@@ -49,17 +49,11 @@ TPolygonId TPolygon::Index() const
 	return TPolygonId(index);
 }
 
-TVectorD TPolygon::Normal() const
+TVectorF TPolygon::Normal() const
 {
 	TVectorD normal;
-	Polygon.Normal(normal);
-	return normal.normalized();
-}
-
-TVectorF TPolygon::NormalF() const
-{
-	TVectorF fnormal(Normal());
-	return fnormal;
+	Polygon.Normal(&normal.x);
+	return normal;
 }
 
 /*
@@ -129,8 +123,7 @@ void TPolygon::Init(CLxUser_Edge* edge)
 
 TVectorF TPolygon::Center()
 {
-	TVectorF res;
-	res.clear();
+	TVectorF res(0, 0, 0);
 
 	for (auto v : Vertexes()) {
 		res += v.Pos();

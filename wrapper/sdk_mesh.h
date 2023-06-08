@@ -1,6 +1,5 @@
 #pragma once
 
-#include "lxmesh.h"
 #ifdef MODOSDK
 #include <lx_mesh.hpp>
 #endif
@@ -9,15 +8,17 @@
 #include <lwmeshedt.h>
 #endif
 
-namespace NSDK {
+namespace NSdk {
 
 #ifdef MODOSDK
-    using TMaskMode = LXtMarkMode;
+    using TMode = LXtMarkMode;
 #endif
 
 #ifdef LWSDK
-    using TMaskMode = int;
+    struct TMode {
+        int Set{};
+        int Clear{};
+    };
 #endif
-
 
 } // namespace NSDK

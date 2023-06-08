@@ -10,14 +10,16 @@ file(GLOB WRAPPER_HEADERS ${CMAKE_SOURCE_DIR}/wrapper/*.h)
 
 add_library(wrapper ${WRAPPER_SOURCES} ${WRAPPER_HEADERS})
 
+target_include_directories(wrapper PRIVATE ${CMAKE_SOURCE_DIR}/contrib/glm/glm)
+
 IF(DEFINED ENV{MODOSDK})
     add_compile_definitions(MODOSDK)
-    target_include_directories(wrapper PRIVATE ${CMAKE_SOURCE_DIR}/modosdk/include)
+    target_include_directories(wrapper PRIVATE ${CMAKE_SOURCE_DIR}/contrib/modosdk/include)
 ENDIF()
 
 IF(DEFINED ENV{LWSDK})
     add_compile_definitions(LWSDK)
-    target_include_directories(wrapper PRIVATE ${CMAKE_SOURCE_DIR}/lwsdk/include)
+    target_include_directories(wrapper PRIVATE ${CMAKE_SOURCE_DIR}/contrib/lwsdk/include)
 ENDIF()
 
 target_include_directories(wrapper PRIVATE ${CMAKE_SOURCE_DIR})

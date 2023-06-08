@@ -136,16 +136,16 @@ float NGeometry::AngleNormalized(const TVectorF& v1, const TVectorF& v2)
 	auto a = v1;
 	auto b = v2;
 
-	a.normalized();
-	b.normalized();
+	a /= glm::length(a);
+	b /= glm::length(b);
 
 	if (dot(a, b) >= 0.0f) {
-		return 2.0f * saasin((b - a).len() / 2.0f);
+		return 2.0f * (saasin(glm::length(b - a)) / 2.0f);
 	}
 
 	auto negB = -b;
 
-	return M_PI - 2.0f * saasin((a - negB).len() / 2.0f);
+	return M_PI - 2.0f * saasin(glm::length(a - negB) / 2.0f);
 }
 
 float NGeometry::ClosestToLine(TVectorF& rClose, const TVectorF& p, const TVectorF& l1, const TVectorF& l2)
@@ -156,7 +156,7 @@ float NGeometry::ClosestToLine(TVectorF& rClose, const TVectorF& p, const TVecto
 
 float NGeometry::ClosestToRay(TVectorF& rClose, const TVectorF& p, const TVectorF& rayOrig, const TVectorF& rayDir)
 {
-	if (rayDir.empty()) {
+	if (rayDir == TVectorF(0, 0, 0)) {
 		rClose = rayOrig;
 		return 0.0f;
 	}
@@ -253,8 +253,8 @@ std::vector<TVectorF> NGeometry::InterpolateBezier(
 
 	q0 = rt0;
 	q1 = rt1 + rt2 + rt3;
-	q2 = 2 * rt2 + 6 * rt3;
-	q3 = 6 * rt3;
+	q2 = 2.0f * rt2 + 6.0f * rt3;
+	q3 = 6.0f * rt3;
 
 	std::vector<TVectorF> p;
 	for (unsigned a = 0; a <= it; ++a) {
